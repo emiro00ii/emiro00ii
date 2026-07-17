@@ -1,0 +1,12 @@
+name: Build and Test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Rust
+        uses: rust-lang/setup-rust@v1
+      - name: Build and test
+        run: rustc --crate-type lib my_rust_code.rs && rustc --crate-type bin my_rust_code.rs && echo 'Success!'
